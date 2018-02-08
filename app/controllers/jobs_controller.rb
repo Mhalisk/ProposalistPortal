@@ -1,10 +1,14 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [:show, :edit, :update, :destroy]
-  access all: [:index, :show, :new, :edit, :create, :update, :destroy], user: :all
+  before_action :set_job, only: [:show, :edit, :update, :destroy], except: [:encor_index] 
+  access all: [:index, :show, :new, :edit, :create, :update, :destroy, :encor_index], user: :all
 
   # GET /jobs
   def index
     @jobs = Job.all
+  end
+
+  def list_encor_jobs
+    @encor_jobs = Job.encor
   end
 
   # GET /jobs/1

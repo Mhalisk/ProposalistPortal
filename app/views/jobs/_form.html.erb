@@ -21,6 +21,15 @@
     <%= form.text_field :job_link, id: :job_job_link %>
   </div>
 
+  <div class="field">
+    <%= form.label :company_id %>
+    <%= form.select(:company_id,
+                    options_for_select([
+                                        ['Encor Solar', 1], 
+                                        ['Powerhome Solar', 2]
+                                        ])) %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

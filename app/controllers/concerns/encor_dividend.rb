@@ -24,7 +24,6 @@ module EncorDividend
     puts "Driver has been instanciated..."
 
     setup('https://phoenix.encorsolar.com')
-    redirect_to :pages_home
   end
 
   def write_things(xpath, writing)
@@ -115,7 +114,7 @@ module EncorDividend
     find_element_with_wait(xpath: '//*[@id="loginbutton"]').click
 
     puts "Successfully logged into Dividend..."
-
+    redirect_to :pages_home
     add_new_home_owner()
   end
 

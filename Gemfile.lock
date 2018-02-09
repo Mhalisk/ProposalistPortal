@@ -224,7 +224,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
-  capybara (~> 2.13)
+  capybara (~> 2.17)
   chromedriver-helper (~> 1.2)
   coffee-rails (~> 4.2)
   devise (~> 4.4, >= 4.4.1)

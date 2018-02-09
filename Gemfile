@@ -38,7 +38,6 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
-  gem 'selenium-webdriver'
 end
 
 group :development do
@@ -56,3 +55,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Custom Gems
 gem 'devise', '~> 4.4', '>= 4.4.1'
 gem 'petergate', '~> 1.8', '>= 1.8.1'
+gem 'selenium-webdriver', '~> 3.5.1'
+gem 'chromedriver-helper', '~> 1.2'
+gem 'figaro', '~> 1.1', '>= 1.1.1'

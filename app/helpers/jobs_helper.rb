@@ -44,4 +44,8 @@ module JobsHelper
       @location = 'Unknown Location, please contact the administrator'
     end
   end
+
+  def display_lending_options(company_id, location_id)
+    # logic for dynamically rendering lending options based on company and location
+  end
 end

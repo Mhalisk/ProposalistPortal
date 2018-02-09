@@ -6,4 +6,8 @@ class Job < ApplicationRecord
   def self.encor
     where(company_id: 1)
   end
+
+  def self.powerhome
+    where(company_id: 2)
+  end
 end

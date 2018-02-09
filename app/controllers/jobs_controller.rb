@@ -11,6 +11,10 @@ class JobsController < ApplicationController
     @encor_jobs = Job.encor
   end
 
+  def list_powerhome_jobs
+    @powerhome_jobs = Job.powerhome
+  end
+
   # GET /jobs/1
   def show
   end

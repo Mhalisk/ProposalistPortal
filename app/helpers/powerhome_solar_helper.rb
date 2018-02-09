@@ -1,0 +1,2 @@
+module PowerhomeSolarHelper
+end

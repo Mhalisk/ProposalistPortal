@@ -20,6 +20,9 @@ module EncorDividend
     Capybara.javascript_driver = :headless_chrome
 
     @driver = Selenium::WebDriver.for :chrome, options: options
+    
+    puts "Driver has been instanciated..."
+
     setup('https://phoenix.encorsolar.com')
     redirect_to :pages_home
   end
@@ -38,6 +41,9 @@ module EncorDividend
 
   def setup(url)
     @driver.navigate.to(url)
+
+    puts "Setup method has been completed..."
+
     login_to_phx()
   end
   
@@ -51,6 +57,9 @@ module EncorDividend
     write_things('//*[@id="email"]', ENV["PHX_EMAIL"])
     write_things('//*[@id="password"]', ENV["PHX_PASSWORD"])
     find_element_with_wait(xpath: '//*[@id="login_form"]/button').click
+
+    puts "Log into phx successful..."
+
     go_to_job_admin_page()
   end
 
@@ -58,11 +67,12 @@ module EncorDividend
     @job = 'https://phoenix.encorsolar.com/customers/lead_details/NTM1MTU%3D'
     @driver.manage.window.maximize
     @driver.navigate.to(@job)
+
+    puts "navigated to phx admin page"
     get_phx_admin_page_info()
   end
 
   def get_phx_admin_page_info()
-    puts "I'm about to grab some info!"
     @first_name = find_element_with_wait(xpath: '//*[@id="first-name"]').attribute('value')
     @last_name = find_element_with_wait(xpath: '//*[@id="last-name"]').attribute('value')
     @street_address = find_element_with_wait(xpath: '//*[@id="address"]').attribute('value')
@@ -70,6 +80,9 @@ module EncorDividend
     @full_address = find_element_with_wait(xpath: '//*[@id="full-address"]').attribute('value')
     @email = find_element_with_wait(xpath: '//*[@id="email"]').attribute('value')
     @phone = find_element_with_wait(xpath: '//*[@id="phone"]').attribute('value')
+
+    puts "Information has successfully been scraped off of phx admin page..."
+
     get_phx_pai_page_info()
   end
   
@@ -78,6 +91,9 @@ module EncorDividend
     @ssn = find_element_with_wait(xpath: '//*[@id="ssn"]').attribute('value')
     @annual_income = find_element_with_wait(xpath: '//*[@id="annual-income"]').attribute('value')
     @mortgage_payment = find_element_with_wait(xpath: '//*[@id="rent-payments"]').attribute('value')
+
+    puts "Information has successfully been scraped off of phx primary applicant info page..."
+
     start_dividend()
   end
 
@@ -86,6 +102,9 @@ module EncorDividend
   def start_dividend
     @driver.manage.window.maximize
     @driver.navigate.to('https://partner.solar/?_ga=2.258645962.1171827090.1516652684-1601784883.1516652684')
+
+    puts "Successfully navigated to Dividend"
+
     login_to_dividend()
   end
 
@@ -94,6 +113,9 @@ module EncorDividend
     write_things('//*[@id="emailinput"]', ENV["DIVIDEND_EMAIL"])
     write_things('//*[@id="passwordinput"]', ENV["DIVIDEND_PASSWORD"])
     find_element_with_wait(xpath: '//*[@id="loginbutton"]').click
+
+    puts "Successfully logged into Dividend"
+
     add_new_home_owner()
   end
 
@@ -106,6 +128,9 @@ module EncorDividend
     write_things('//*[@id="AGZ"]', @phone)
     find_element_with_wait(xpath: '//*[@id="Dru"]').click
     find_element_with_wait(xpath: '//*[@id="DoA"]').click
+
+    puts "Successfully added a new homeowner"
+
     dividend_credit_check()
   end
 
@@ -122,10 +147,12 @@ module EncorDividend
     write_things('//*[@id="aAcmm"]', @ssn)
     find_element_with_wait(xpath: '//*[@id="Dos"]').click
 
+    puts "Credit check has been successful"
+
     # dividend_sales_proposal()
   end
 
-  def dividend_sales_proposal
+  def dividend_sales_proposal()
     wait = Selenium::WebDriver::Wait.new(timeout: 120)
     wait.until { @driver.find_element(xpath: '//*[@id="bTIVr0"]').displayed? }
     find_element_with_wait(xpath: '//*[@id="bTIVr0"]').click

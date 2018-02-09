@@ -68,7 +68,7 @@ module EncorDividend
     @driver.manage.window.maximize
     @driver.navigate.to(@job)
 
-    puts "navigated to phx admin page"
+    puts "navigated to phx admin page..."
     get_phx_admin_page_info()
   end
 
@@ -103,7 +103,7 @@ module EncorDividend
     @driver.manage.window.maximize
     @driver.navigate.to('https://partner.solar/?_ga=2.258645962.1171827090.1516652684-1601784883.1516652684')
 
-    puts "Successfully navigated to Dividend"
+    puts "Successfully navigated to Dividend..."
 
     login_to_dividend()
   end
@@ -114,7 +114,7 @@ module EncorDividend
     write_things('//*[@id="passwordinput"]', ENV["DIVIDEND_PASSWORD"])
     find_element_with_wait(xpath: '//*[@id="loginbutton"]').click
 
-    puts "Successfully logged into Dividend"
+    puts "Successfully logged into Dividend..."
 
     add_new_home_owner()
   end
@@ -129,14 +129,14 @@ module EncorDividend
     find_element_with_wait(xpath: '//*[@id="Dru"]').click
     find_element_with_wait(xpath: '//*[@id="DoA"]').click
 
-    puts "Successfully added a new homeowner"
+    puts "Successfully added a new homeowner..."
 
     dividend_credit_check()
   end
 
   def dividend_credit_check()
     # DO NOT TOUCH THIS
-    puts "You've reached credit check"
+    puts "You've reached credit check..."
     wait = Selenium::WebDriver::Wait.new(timeout: 10)
     wait.until { @driver.find_element(xpath: '//*[@id="Dop"]').displayed? }
     write_things('//*[@id="Dop"]', @annual_income)
@@ -147,7 +147,9 @@ module EncorDividend
     write_things('//*[@id="aAcmm"]', @ssn)
     find_element_with_wait(xpath: '//*[@id="Dos"]').click
 
-    puts "Credit check has been successful"
+    puts "Credit check has been successful..."
+
+    puts "All dividend processes have been completed SUCCESSFULLY"
 
     # dividend_sales_proposal()
   end

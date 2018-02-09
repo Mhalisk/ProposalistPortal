@@ -30,6 +30,26 @@
                                         ])) %>
   </div>
 
+  <div class="field">
+    <%= form.label :location_id %>
+    <%= form.select(:location_id,
+                    options_for_select([
+                                        ['Arizona', 1], 
+                                        ['California (North)', 2],
+                                        ['California (South)', 3],
+                                        ['Connecticut', 4],
+                                        ['Florida', 5],
+                                        ['Massachusetts', 6],
+                                        ['Nevada', 7],
+                                        ['New York (Long Island)', 8],
+                                        ['New York (NYC | The Boroughs)', 9],
+                                        ['Rhode Island', 10],
+                                        ['Texas (Austin Energy | Oncor)', 11],
+                                        ['Texas (San Antonio | CPS)', 12],
+                                        ['Utah', 13]
+                                        ])) %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

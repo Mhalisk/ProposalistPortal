@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [:show, :edit, :update, :destroy], except: [:encor_index] 
-  access all: [:index, :show, :new, :edit, :create, :update, :destroy, :encor_index], user: :all
+  before_action :set_job, only: [:show, :edit, :update, :destroy]
+  access all: [:index, :show, :new, :edit, :create, :update, :destroy], user: :all
 
   # GET /jobs
   def index
@@ -62,6 +62,6 @@ class JobsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def job_params
-      params.require(:job).permit(:customer_name, :job_link, :company_id)
+      params.require(:job).permit(:customer_name, :job_link, :company_id, :location_id)
     end
 end

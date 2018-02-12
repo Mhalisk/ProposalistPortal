@@ -32,7 +32,7 @@ module EncorDividend
     element.send_keys(writing)
   end
 
-  def find_element_with_wait(what, time = 25) 
+  def find_element_with_wait(what, time = 5) 
     wait = Selenium::WebDriver::Wait.new(timeout: time) 
     wait.until { 
       element = @driver.find_element(what)
@@ -81,7 +81,7 @@ module EncorDividend
     @email = find_element_with_wait(xpath: '//*[@id="email"]').attribute('value')
     @phone = find_element_with_wait(xpath: '//*[@id="phone"]').attribute('value')
 
-    puts "Information has successfully been scraped off of phx admin page..."
+    puts "Information has successfully been scraped off of phx information page..."
 
     get_phx_pai_page_info()
   end

@@ -75,8 +75,8 @@ module EncorDividend
   def get_phx_admin_page_info()
     @first_name = find_element_with_wait(xpath: '//*[@id="first-name"]').attribute('value')
     @last_name = find_element_with_wait(xpath: '//*[@id="last-name"]').attribute('value')
-    @street_address = find_element_with_wait(xpath: '//*[@id="address"]').attribute('value')
-    @city = find_element_with_wait(xpath: '//*[@id="city"]').attribute('value')
+    # @street_address = find_element_with_wait(xpath: '//*[@id="address"]').attribute('value')
+    # @city = find_element_with_wait(xpath: '//*[@id="city"]').attribute('value')
     @full_address = find_element_with_wait(xpath: '//*[@id="full-address"]').attribute('value')
     @email = find_element_with_wait(xpath: '//*[@id="email"]').attribute('value')
     @phone = find_element_with_wait(xpath: '//*[@id="phone"]').attribute('value')
@@ -120,6 +120,8 @@ module EncorDividend
   end
 
   def add_new_home_owner()
+    puts "Adding a new homeowner"
+
     find_element_with_wait(xpath: '//*[@id="CLb1"]').click
     write_things('//*[@id="AFy"]', @first_name)
     write_things('//*[@id="AGE"]', @last_name)

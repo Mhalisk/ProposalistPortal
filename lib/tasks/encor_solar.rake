@@ -92,7 +92,6 @@ namespace :encor_solar do
       @mortgage_payment = find_element_with_wait(xpath: '//*[@id="rent-payments"]').attribute('value')
   
       puts "Information has successfully been scraped off of phx primary applicant info page..."
-      redirect_to :pages_home
       start_dividend()
     end
   

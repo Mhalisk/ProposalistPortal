@@ -24,7 +24,6 @@ namespace :encor_solar do
       puts "Driver has been instanciated..."
   
       setup('https://phoenix.encorsolar.com')
-      # redirect_to :pages_home
     end
   
     def write_things(xpath, writing)
@@ -93,7 +92,7 @@ namespace :encor_solar do
       @mortgage_payment = find_element_with_wait(xpath: '//*[@id="rent-payments"]').attribute('value')
   
       puts "Information has successfully been scraped off of phx primary applicant info page..."
-  
+      redirect_to :pages_home
       start_dividend()
     end
   

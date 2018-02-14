@@ -146,6 +146,7 @@ namespace :encor_solar do
       find_element_with_wait(xpath: '//*[@id="DpQ"]').click
       write_things('//*[@id="aAcmm"]', @ssn)
       find_element_with_wait(xpath: '//*[@id="Dos"]').click
+      sleep 10
   
       puts "Credit check has been successful..."
   

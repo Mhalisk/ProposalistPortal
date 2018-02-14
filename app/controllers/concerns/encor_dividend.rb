@@ -2,9 +2,9 @@ module EncorDividend
   extend ActiveSupport::Concern
 
   def run_encor_dividend
-    render :nothing => true
+    render 'encor_solar/run_encor_dividend.html.erb'
+    puts "Custom render was rendered"
     `cd #{Rails.root} && rake encor_solar:dividend --trace`
-    puts "You have ran run_encor_dividend"
   end
 
 end

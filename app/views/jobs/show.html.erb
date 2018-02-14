@@ -22,8 +22,23 @@
 
 <p>
   <strong>Lending Options</strong>
-  <%= link_to 'Start Dividend', encor_start_dividend_path %>
+  <%= link_to 'Start Dividend', "#", id: 'encore-start-dividend' %>
 </p>
 
 <%= link_to 'Edit', edit_job_path(@job) %> |
 <%= link_to 'Back', jobs_path %>
+
+<script>
+  $('#encore-start-dividend').click(function(){
+    $.ajax({
+      type: "GET",
+      url: "/run_encor_dividend",
+      success: function(data){
+        alert("YAY!");
+      },
+      error: function(data){
+        alert(data);
+      }
+    });
+  });
+</script>

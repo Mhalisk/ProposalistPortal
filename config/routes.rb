@@ -13,5 +13,5 @@ Rails.application.routes.draw do
   
   get 'encor_solar/home'
   get 'encor_start_dividend', to: 'encor_solar#start'
-
+  get 'run_encor_dividend', to: 'encor_solar#run_encor_dividend'
 end

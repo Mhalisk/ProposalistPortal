@@ -1,6 +1,8 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [:show, :edit, :update, :destroy]
+  before_action :set_job, only: [:show, :edit, :update, :destroy, :run_encor_dividend]
   access all: [:index, :show, :new, :edit, :create, :update, :destroy], user: :all
+  
+  include EncorDividend
 
   # GET /jobs
   def index
@@ -57,7 +59,7 @@ class JobsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_job
-      @job = Job.find(params[:id])
+      @job = Job.find(params[:id]) 
     end
 
     # Only allow a trusted parameter "white list" through.

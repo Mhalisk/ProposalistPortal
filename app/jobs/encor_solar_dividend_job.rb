@@ -1,7 +1,8 @@
 class EncorSolarDividendJob < ApplicationJob
   queue_as :default
 
-  def perform(*args)
+  def perform(job_to_run)
+    @job_to_run = job_to_run
     start_encor_dividend()
   end
 
@@ -67,9 +68,8 @@ class EncorSolarDividendJob < ApplicationJob
   end
 
   def go_to_job_admin_page() 
-    @job = 'https://phoenix.encorsolar.com/customers/lead_details/NTM1MTU%3D'
     @driver.manage.window.maximize
-    @driver.navigate.to(@job)
+    @driver.navigate.to(@job_to_run)
 
     puts "navigated to phx admin page..."
     get_phx_admin_page_info()

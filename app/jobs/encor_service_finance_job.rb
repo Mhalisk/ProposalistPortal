@@ -20,13 +20,10 @@ class EncorServiceFinanceJob < ApplicationJob
 
   def setup()
     # To switch between normal and headless remove headless option from array and delete headless part of :headless_chrome
-
     chrome_bin = ENV.fetch('GOOGLE_CHROME_SHIM', nil)
-
     options = {}
     options[:args] = ['disable-gpu', 'window-size=1280,1024']
     options[:binary] = chrome_bin if chrome_bin
-  
     Capybara.register_driver :chrome do |app|
       Capybara::Selenium::Driver.new(app,
          browser: :chrome,
@@ -35,11 +32,8 @@ class EncorServiceFinanceJob < ApplicationJob
     end
   
     Capybara.javascript_driver = :headless_chrome
-
     @driver = Selenium::WebDriver.for :chrome, options: options
-    
     puts "Driver has been instanciated..."
-
     start_encor_service_finance('https://apply.svcfin.com/')
   end
 
@@ -57,16 +51,13 @@ end
   write_things('//*[@id="email"]', ENV["PHX_EMAIL"])
   write_things('//*[@id="password"]', ENV["PHX_PASSWORD"])
   find_element_with_wait(xpath: '//*[@id="login_form"]/button').click
-
   puts "Log into phx successful..."
-
   go_to_job_admin_page()
 end
 
 def go_to_job_admin_page() 
   @driver.manage.window.maximize
   @driver.navigate.to(@job_to_run)
-
   puts "navigated to phx admin page..."
   get_phx_admin_page_info()
 end
@@ -79,9 +70,7 @@ def get_phx_admin_page_info()
   @full_address = find_element_with_wait(xpath: '//*[@id="full-address"]').attribute('value')
   @email = find_element_with_wait(xpath: '//*[@id="email"]').attribute('value')
   @phone = find_element_with_wait(xpath: '//*[@id="phone"]').attribute('value')
-
   puts "Information has successfully been scraped off of phx information page..."
-
   get_phx_pai_page_info()
 end
 
@@ -93,5 +82,5 @@ def get_phx_pai_page_info()
 
   puts "Information has successfully been scraped off of phx primary applicant info page..."
 
-  #Start Service Finance
+  # Start Service Finance
 end

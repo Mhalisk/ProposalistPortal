@@ -45,7 +45,26 @@ module JobsHelper
     end
   end
 
-  def display_lending_options(company_id, location_id)
-    # logic for dynamically rendering lending options based on company and location
+  # Lending options view logic
+
+  def check_for_dividend(company_id, location_id)
+    if company_id == 1 && location_id == 1 || 2 || 3 || 4 || 5 || 6 || 7 || 8 || 9 || 10 || 11 || 12 || 13
+      link_to 'Start Dividend', run_encor_dividend_path
+    end
+  end
+
+  def check_for_service_finance_altaray(company_id, location_id)
+    if company_id == 1 && location_id == 12 
+      link_to 'Start Service Finance', run_encor_service_finance_path
+    end
+  end
+
+  def check_for_service_finance_freedom(company_id, location_id)
+  end
+
+  def check_for_mosaic_altaray(company_id, location_id)
+  end
+
+  def check_for_mosaic_lighthouse(company_id, location_id)
   end
 end

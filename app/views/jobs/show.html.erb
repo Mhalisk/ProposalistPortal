@@ -23,9 +23,9 @@
 <p>
   <strong>Lending Options</strong>
   <br>
-  <%= link_to 'Start Dividend', run_encor_dividend_path%>
+  <%= check_for_dividend(@job.company_id, @job.location_id) %>
   <br>
-  <%= link_to 'Start Service Finance', run_encor_service_finance_path %>
+  <%= check_for_service_finance_altaray(@job.company_id, @job.location_id) %>
 </p>
 
 <%= link_to 'Edit', edit_job_path(@job) %> |

@@ -6,4 +6,8 @@ module EncorDividend
     EncorSolarDividendJob.perform_later(job_to_run)
   end
 
+  def run_encor_service_finance
+    puts 'Service finance has been ran'
+  end
+
 end

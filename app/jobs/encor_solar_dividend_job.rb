@@ -3,10 +3,22 @@ class EncorSolarDividendJob < ApplicationJob
 
   def perform(job_to_run)
     @job_to_run = job_to_run
-    start_encor_dividend()
+    setup()
   end
 
-  def start_encor_dividend()
+  def write_things(xpath, writing)
+    element = find_element_with_wait(xpath: xpath)
+    element.send_keys(writing)
+  end
+
+  def find_element_with_wait(what, time = 5) 
+    wait = Selenium::WebDriver::Wait.new(timeout: time) 
+    wait.until { 
+      element = @driver.find_element(what)
+    }
+  end
+
+  def setup()
     # To switch between normal and headless remove headless option from array and delete headless part of :headless_chrome
 
     chrome_bin = ENV.fetch('GOOGLE_CHROME_SHIM', nil)
@@ -28,22 +40,10 @@ class EncorSolarDividendJob < ApplicationJob
     
     puts "Driver has been instanciated..."
 
-    setup('https://phoenix.encorsolar.com')
+    start_encor_dividend('https://phoenix.encorsolar.com')
   end
 
-  def write_things(xpath, writing)
-    element = find_element_with_wait(xpath: xpath)
-    element.send_keys(writing)
-  end
-
-  def find_element_with_wait(what, time = 5) 
-    wait = Selenium::WebDriver::Wait.new(timeout: time) 
-    wait.until { 
-      element = @driver.find_element(what)
-    }
-  end
-
-  def setup(url)
+  def start_encor_dividend(url)
     @driver.navigate.to(url)
 
     puts "Setup method has been completed..."
@@ -155,5 +155,6 @@ class EncorSolarDividendJob < ApplicationJob
     puts "Credit check has been successful..."
 
     puts "All dividend processes have been completed SUCCESSFULLY"
+    close_browser()
   end
 end

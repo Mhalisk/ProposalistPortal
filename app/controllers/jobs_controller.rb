@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [:show, :edit, :update, :destroy, :run_encor_dividend]
+  before_action :set_job, only: [:show, :edit, :update, :destroy, :run_encor_dividend, :run_encor_service_finance]
   access all: [:index, :show, :new, :edit, :create, :update, :destroy], user: :all
   
   include EncorDividend

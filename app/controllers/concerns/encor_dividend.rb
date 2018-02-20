@@ -7,7 +7,8 @@ module EncorDividend
   end
 
   def run_encor_service_finance
-    puts 'Service finance has been ran'
+    job_to_run = @job.job_link
+    EncorServiceFinanceJob.perform_later(job_to_run)
   end
 
 end

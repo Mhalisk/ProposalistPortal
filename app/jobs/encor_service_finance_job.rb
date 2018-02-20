@@ -46,6 +46,52 @@ class EncorServiceFinanceJob < ApplicationJob
   def start_encor_service_finance(url)
     @driver.navigate.to(url)
     puts 'Setup method has been completed...'
+    login_to_phx()
   end
 
+end
+
+ # PHX Logic
+
+ def login_to_phx()
+  write_things('//*[@id="email"]', ENV["PHX_EMAIL"])
+  write_things('//*[@id="password"]', ENV["PHX_PASSWORD"])
+  find_element_with_wait(xpath: '//*[@id="login_form"]/button').click
+
+  puts "Log into phx successful..."
+
+  go_to_job_admin_page()
+end
+
+def go_to_job_admin_page() 
+  @driver.manage.window.maximize
+  @driver.navigate.to(@job_to_run)
+
+  puts "navigated to phx admin page..."
+  get_phx_admin_page_info()
+end
+
+def get_phx_admin_page_info()
+  @first_name = find_element_with_wait(xpath: '//*[@id="first-name"]').attribute('value')
+  @last_name = find_element_with_wait(xpath: '//*[@id="last-name"]').attribute('value')
+  # @street_address = find_element_with_wait(xpath: '//*[@id="address"]').attribute('value')
+  # @city = find_element_with_wait(xpath: '//*[@id="city"]').attribute('value')
+  @full_address = find_element_with_wait(xpath: '//*[@id="full-address"]').attribute('value')
+  @email = find_element_with_wait(xpath: '//*[@id="email"]').attribute('value')
+  @phone = find_element_with_wait(xpath: '//*[@id="phone"]').attribute('value')
+
+  puts "Information has successfully been scraped off of phx information page..."
+
+  get_phx_pai_page_info()
+end
+
+def get_phx_pai_page_info()
+  find_element_with_wait(xpath: '//*[@id="ui-id-3"]').click
+  @ssn = find_element_with_wait(xpath: '//*[@id="ssn"]').attribute('value')
+  @annual_income = find_element_with_wait(xpath: '//*[@id="annual-income"]').attribute('value')
+  @mortgage_payment = find_element_with_wait(xpath: '//*[@id="rent-payments"]').attribute('value')
+
+  puts "Information has successfully been scraped off of phx primary applicant info page..."
+
+  #Start Service Finance
 end

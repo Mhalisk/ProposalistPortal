@@ -11,7 +11,7 @@ class EncorSolarDividendJob < ApplicationJob
     element.send_keys(writing)
   end
 
-  def find_element_with_wait(what, time = 5) 
+  def find_element_with_wait(what, time = 25) 
     wait = Selenium::WebDriver::Wait.new(timeout: time) 
     wait.until { 
       element = @driver.find_element(what)
@@ -131,6 +131,5 @@ class EncorSolarDividendJob < ApplicationJob
     puts "Credit check has been successful..."
     puts "All dividend processes have been completed SUCCESSFULLY"
     close_browser()
-    @driver.quit()
   end
 end

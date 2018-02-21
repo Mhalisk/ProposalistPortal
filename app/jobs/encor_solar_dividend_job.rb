@@ -131,5 +131,6 @@ class EncorSolarDividendJob < ApplicationJob
     puts "Credit check has been successful..."
     puts "All dividend processes have been completed SUCCESSFULLY"
     close_browser()
+    @driver.quit()
   end
 end

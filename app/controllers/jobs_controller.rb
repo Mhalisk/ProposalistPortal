@@ -1,8 +1,10 @@
+require 'uri'
+
 class JobsController < ApplicationController
-  before_action :set_job, only: [:show, :edit, :update, :destroy, :run_encor_dividend, :run_encor_service_finance]
+  before_action :set_job, only: [:show, :edit, :update, :destroy]
   access all: [:index, :show, :new, :edit, :create, :update, :destroy], user: :all
-  
   include EncorDividend
+  include JobsApi
 
   # GET /jobs
   def index
@@ -23,7 +25,8 @@ class JobsController < ApplicationController
 
   # GET /jobs/new
   def new
-    @job = Job.new
+    @job = Job.new 
+    url_parser()
   end
 
   # GET /jobs/1/edit
@@ -32,13 +35,8 @@ class JobsController < ApplicationController
 
   # POST /jobs
   def create
-    @job = Job.new(job_params)
-
-    if @job.save
-      redirect_to @job, notice: 'Job was successfully created.'
-    else
-      render :new
-    end
+    @job = Job.new(job_params)  
+    puts @job.first_name
   end
 
   # PATCH/PUT /jobs/1
@@ -64,6 +62,6 @@ class JobsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def job_params
-      params.require(:job).permit(:customer_name, :job_link, :company_id, :location_id)
+      params.require(:job).permit(:first_name, :last_name, :address, :city, :state, :zip, :email, :phone_number, :ssn, :annual_income, :mortgage_payment, :job_link, :company_id, :location_id)
     end
 end

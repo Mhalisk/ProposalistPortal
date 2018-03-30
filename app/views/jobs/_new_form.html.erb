@@ -1,0 +1,72 @@
+<div hidden id="starting_form" >
+  <%= form_with(url: @url_for_form) do |form| %>
+    <div class="field">
+      <%= form.label :state %>
+      <%= form.text_field :state, id: :job_state, :value => @state %>
+    </div>
+  <% end %>
+</div>
+
+<div id="dividend_form" hidden>
+  <h1>Dividend Portal</h1>
+  <%= form_with(url: run_encor_dividend_path ) do |form| %>
+    <div class="field">
+      <%= form.label :first_name %>
+        <%= form.text_field :first_name, id: :job_first_name, :value => @first_name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :last_name %>
+        <%= form.text_field :last_name, id: :job_last_name, :value => @last_name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :address %>
+        <%= form.text_field :address, id: :job_address, :value => @address %>
+    </div>
+
+    <div class="field">
+      <%= form.label :city %>
+        <%= form.text_field :city, id: :job_city, :value => @city %>
+    </div>
+
+    <div class="field">
+      <%= form.label :state %>
+        <%= form.text_field :state, id: :job_state, :value => @state %>
+    </div>
+
+    <div class="field">
+      <%= form.label :zip %>
+        <%= form.text_field :zip, id: :job_zip, :value => @zip %>
+    </div>
+
+    <div class="field">
+      <%= form.label :email %>
+        <%= form.text_field :email, id: :job_email, :value => @email %>
+    </div>
+
+    <div class="field">
+      <%= form.label :phone_number %>
+        <%= form.text_field :phone_number, id: :job_phone_number, :value => @phone_number %>
+    </div>
+
+    <div class="field">
+      <%= form.label :ssn %>
+        <%= form.text_field :ssn, id: :job_ssn, :value => @ssn %>
+    </div>
+
+    <div class="field">
+      <%= form.label :annual_income %>
+        <%= form.text_field :annual_income, id: :job_annual_income, :value => @annual_income %>
+    </div>
+
+    <div class="field">
+      <%= form.label :mortgage_payment %>
+        <%= form.text_field :mortgage_payment, id: :job_mortgage_payment, :value => @mortgage_payment %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit :value => 'Start Dividend'%>
+    </div>
+  <% end %>
+</div>

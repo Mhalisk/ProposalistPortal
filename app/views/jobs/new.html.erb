@@ -1,5 +1,90 @@
-<h1>New Job</h1>
+<%= render 'new_form' %>
 
-<%= render 'form', job: @job %>
+<div id="chose_lending_option">
+  <h1>Choose Lending option</h1>
+  <button id='dividend_button' hidden onclick="showDividendForm()">Dividend</button>
+</div>
 
-<%= link_to 'Back', jobs_path %>
+<script>
+  // Button display logic
+  function displayLendingOptions() {
+    var value = $('#job_state').val();
+    var showDividend = $('#dividend_button').attr('hidden', false);
+
+    switch(value) {
+      case 'CA':
+        showDividend
+        break;
+      case 'AZ':
+        showDividend
+        break;
+      case 'NV':
+      case 'UT':
+        showDividend
+        break;
+      case 'ID':
+      case 'CO':
+        showDividend
+        break;
+      case 'TX':
+        showDividend
+        break;
+      case 'FL':
+        showDividend
+        break;
+      case 'NY':
+        showDividend
+        break;
+      case 'NJ': 
+        showDividend
+        break;
+      case 'MA': 
+        showDividend
+        break;
+      case 'CT':
+        showDividend
+        break;
+      case 'RI':
+        showDividend
+        break;
+      case 'SC':
+        showDividend
+        break;
+      case 'NC':
+        showDividend
+        break;
+      case 'NM':  
+        showDividend
+        break;
+      case 'VT':
+      case 'KS':
+      case 'OR':
+        showDividend
+        break;
+      case 'WA':
+      case 'MI':
+        showDividend
+        break;
+      case 'IL':
+        showDividend
+        break;
+      case 'MO':
+        showDividend
+        break;
+      case 'NH':
+        showDividend
+        break;
+      case 'GA':
+        showDividend
+        break;
+    }
+  }
+  displayLendingOptions();
+
+  // Button Form Hiding
+  function showDividendForm() {
+    $('#dividend_form').attr('hidden', false);
+    $('#chose_lending_option').attr('hidden', true);
+  }
+</script>
+
